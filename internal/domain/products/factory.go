@@ -8,7 +8,6 @@ import (
 	"fmt"
 )
 
-// Factory is responsible for creating valid product entities
 type Factory interface {
 	CreateProduct(ctx context.Context, name string, brandID int, category string, price *prices.Price, size *sizes.Size) (*Product, error)
 }
@@ -45,7 +44,6 @@ func (f *ProductFactory) CreateProduct(ctx context.Context, name string, brandID
 		return nil, fmt.Errorf("brand with ID %d does not exist", brandID)
 	}
 
-	// Create the product with a new ID
 	product := New(
 		f.nextIDFunc(),
 		name,
