@@ -26,7 +26,6 @@ type RegisterBrandCommand struct {
 }
 
 func (s *BrandRegisterService) Register(ctx context.Context, cmd RegisterBrandCommand) (*BrandDTO, error) {
-	// Create new brand using factory (factory will handle category validation)
 	brand, err := s.factory.CreateBrand(ctx, cmd.Name)
 	if err != nil {
 		return nil, err

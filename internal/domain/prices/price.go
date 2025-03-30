@@ -20,13 +20,11 @@ var validCurrencies = map[Currency]bool{
 	EUR: true,
 }
 
-// Price represents a value object for monetary values
 type Price struct {
 	amount   int      // 금액 (최소 단위로 저장, e.g., KRW: 원, USD: cents)
 	currency Currency // 통화
 }
 
-// NewPrice creates a new Price value object with validation
 func NewPrice(amount int, currency Currency) (*Price, error) {
 	if amount < 0 {
 		return nil, fmt.Errorf("price amount cannot be negative: %d", amount)
@@ -42,12 +40,10 @@ func NewPrice(amount int, currency Currency) (*Price, error) {
 	}, nil
 }
 
-// Amount returns the amount in the smallest currency unit
 func (p *Price) Amount() int {
 	return p.amount
 }
 
-// Currency returns the currency
 func (p *Price) Currency() Currency {
 	return p.currency
 }
@@ -63,7 +59,6 @@ func (p *Price) DisplayAmount() float64 {
 	}
 }
 
-// String returns the formatted price with currency
 func (p *Price) String() string {
 	switch p.currency {
 	case KRW:
@@ -77,7 +72,6 @@ func (p *Price) String() string {
 	}
 }
 
-// Add returns a new Price with the sum of two prices
 func (p *Price) Add(other *Price) (*Price, error) {
 	if p.currency != other.currency {
 		return nil, fmt.Errorf("cannot add prices with different currencies: %s and %s",
@@ -87,7 +81,6 @@ func (p *Price) Add(other *Price) (*Price, error) {
 	return NewPrice(p.amount+other.amount, p.currency)
 }
 
-// Subtract returns a new Price with the difference of two prices
 func (p *Price) Subtract(other *Price) (*Price, error) {
 	if p.currency != other.currency {
 		return nil, fmt.Errorf("cannot subtract prices with different currencies: %s and %s",
@@ -97,7 +90,6 @@ func (p *Price) Subtract(other *Price) (*Price, error) {
 	return NewPrice(p.amount-other.amount, p.currency)
 }
 
-// MultiplyByQuantity returns a new Price multiplied by a quantity
 func (p *Price) MultiplyByQuantity(quantity int) (*Price, error) {
 	if quantity < 0 {
 		return nil, fmt.Errorf("quantity cannot be negative: %d", quantity)
@@ -106,7 +98,6 @@ func (p *Price) MultiplyByQuantity(quantity int) (*Price, error) {
 	return NewPrice(p.amount*quantity, p.currency)
 }
 
-// ApplyDiscount returns a new Price with the discount applied
 func (p *Price) ApplyDiscount(discountPercentage float64) (*Price, error) {
 	if discountPercentage < 0 || discountPercentage > 100 {
 		return nil, fmt.Errorf("invalid discount percentage: %.2f", discountPercentage)
@@ -116,7 +107,6 @@ func (p *Price) ApplyDiscount(discountPercentage float64) (*Price, error) {
 	return NewPrice(discountedAmount, p.currency)
 }
 
-// Equals checks if two prices are equal
 func (p *Price) Equals(other *Price) bool {
 	if other == nil {
 		return false
@@ -124,12 +114,10 @@ func (p *Price) Equals(other *Price) bool {
 	return p.amount == other.amount && p.currency == other.currency
 }
 
-// IsZero checks if the price is zero
 func (p *Price) IsZero() bool {
 	return p.amount == 0
 }
 
-// IsGreaterThan checks if this price is greater than another price
 func (p *Price) IsGreaterThan(other *Price) (bool, error) {
 	if p.currency != other.currency {
 		return false, fmt.Errorf("cannot compare prices with different currencies: %s and %s",
@@ -138,7 +126,6 @@ func (p *Price) IsGreaterThan(other *Price) (bool, error) {
 	return p.amount > other.amount, nil
 }
 
-// IsLessThan checks if this price is less than another price
 func (p *Price) IsLessThan(other *Price) (bool, error) {
 	if p.currency != other.currency {
 		return false, fmt.Errorf("cannot compare prices with different currencies: %s and %s",
