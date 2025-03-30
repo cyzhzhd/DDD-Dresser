@@ -41,6 +41,27 @@ mock data 로드
 make load_mock
 ```
 
+카테고리 별 최저가격 브랜드와 상품 가격, 총액을 조회
+
+```bash
+curl -X GET http://localhost:8080/api/categories/lowest
+```
+
+
+단일 브랜드로 모든 카테고리 상품을 구매할 때 최저가격에 판매하는 브랜드와 카테고리의 상품가격, 총액을 조회
+
+```bash
+curl -X GET http://localhost:8080/api/categories/lowest/brand
+```
+
+
+카테고리 이름으로 최저, 최고 가격 브랜드와 상품 가격을 조회
+
+```bash
+curl -X GET http://localhost:8080/api/categories/lohi/SOCKS
+```
+
+
 브랜드 생성
 
 ```bash
@@ -53,8 +74,8 @@ curl -X POST http://localhost:8080/api/brands \
 브랜드 조회
 
 ```bash
-curl -X get http://localhost:8080/api/brands
-curl -X get http://localhost:8080/api/brands/1
+curl -X GET http://localhost:8080/api/brands \
+curl -X GET http://localhost:8080/api/brands/1
 ```
 
 브랜드 삭제
@@ -84,30 +105,6 @@ curl -X POST http://localhost:8080/api/products \
 ```bash
 curl -X DELETE http://localhost:8080/api/products/1
 ```
-
-
-
-카테고리 별 최저가격 브랜드와 상품 가격, 총액을 조회
-
-```bash
-curl -X GET http://localhost:8080/api/categories/lowest
-```
-
-
-단일 브랜드로 모든 카테고리 상품을 구매할 때 최저가격에 판매하는 브랜드와 카테고리의 상품가격, 총액을 조회
-
-```bash
-curl -X GET http://localhost:8080/api/categories/lowest/brand
-```
-
-
-카테고리 이름으로 최저, 최고 가격 브랜드와 상품 가격을 조회
-
-```bash
-curl -X GET http://localhost:8080/api/categories/lohi/SOCKS
-```
-
-
 
 ## 기타 추가 정보
 
