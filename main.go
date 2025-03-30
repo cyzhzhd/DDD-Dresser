@@ -9,10 +9,13 @@ import (
 	"time"
 
 	abrands "dresser/internal/application/brands"
+	aproducts "dresser/internal/application/products"
 	dbrands "dresser/internal/domain/brands"
+	dproducts "dresser/internal/domain/products"
 	"dresser/internal/infrastructure/config"
 	"dresser/internal/infrastructure/db"
 	pbrands "dresser/internal/infrastructure/persistence/brands"
+	pproducts "dresser/internal/infrastructure/persistence/products"
 	httpserver "dresser/internal/interface/http"
 
 	"net/http"
@@ -32,20 +35,34 @@ func main() {
 	}
 	defer database.Close()
 
-	// Initialize repositories
-	repo := pbrands.NewBrandRepository(database)
-	fact := dbrands.NewFactory(repo)
+	// Initialize brand repositories and services
+	brandRepo := pbrands.NewBrandRepository(database)
+	brandFactory := dbrands.NewFactory(brandRepo)
 
-	// Initialize application services
-	brandRegisterService := abrands.NewBrandRegisterService(repo, &fact)
-	brandQueryService := abrands.NewBrandQueryService(repo)
-	brandDeleteService := abrands.NewBrandDeleteService(repo)
+	brandRegisterService := abrands.NewBrandRegisterService(brandRepo, &brandFactory)
+	brandQueryService := abrands.NewBrandQueryService(brandRepo)
+	brandDeleteService := abrands.NewBrandDeleteService(brandRepo)
+
+	// Initialize product repositories and services
+	productRepo := pproducts.NewProductRepository(database)
+	productFactory := dproducts.NewProductFactory(productRepo, brandRepo)
+
+	productRegisterService := aproducts.NewProductRegisterService(productRepo, productFactory)
+	productQueryService := aproducts.NewProductQueryService(productRepo)
+	productDeleteService := aproducts.NewProductDeleteService(productRepo)
+	productUpdateService := aproducts.NewProductUpdateService(productRepo, productFactory)
+
 	// Initialize HTTP server
 	server := httpserver.NewHTTPServer(httpserver.ServerConfig{
 		Port:                 "8080",
 		BrandRegisterService: brandRegisterService,
 		BrandQueryService:    brandQueryService,
 		BrandDeleteService:   brandDeleteService,
+
+		ProductRegisterService: productRegisterService,
+		ProductQueryService:    productQueryService,
+		ProductDeleteService:   productDeleteService,
+		ProductUpdateService:   productUpdateService,
 	})
 
 	err = listenAndServeGracefully(server)

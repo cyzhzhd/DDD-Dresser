@@ -3,7 +3,6 @@ package brands
 import (
 	"context"
 	"dresser/internal/domain/brands"
-	"dresser/internal/domain/categoriess"
 	"dresser/internal/infrastructure/db"
 	"fmt"
 	"sync"
@@ -12,7 +11,6 @@ import (
 // BrandRepository implements application.Repository interface
 type BrandRepository struct {
 	sync.RWMutex
-	brands map[brands.ID]*brands.Brand
 	lastID brands.ID
 	db     db.DB
 }
@@ -20,7 +18,6 @@ type BrandRepository struct {
 // NewBrandRepository creates a new instance of BrandRepository with a database
 func NewBrandRepository(database db.DB) brands.Repository {
 	return &BrandRepository{
-		brands: make(map[brands.ID]*brands.Brand),
 		lastID: 0,
 		db:     database,
 	}
@@ -61,42 +58,12 @@ func (r *BrandRepository) FindByID(ctx context.Context, id brands.ID) (*brands.B
 
 // Update implements brands.Repository
 func (r *BrandRepository) Update(ctx context.Context, brand *brands.Brand) error {
-	// Use database if available
-	if r.db != nil {
-		return r.db.Update(ctx, "brands", int(brand.ID), brand)
-	}
-
-	// Fallback to in-memory implementation
-	r.Lock()
-	defer r.Unlock()
-
-	if _, exists := r.brands[brand.ID]; !exists {
-		return fmt.Errorf("brand with ID %d not found", brand.ID)
-	}
-
-	brandCopy := *brand
-	r.brands[brandCopy.ID] = &brandCopy
-
-	return nil
+	return r.db.Update(ctx, "brands", int(brand.ID), brand)
 }
 
 // Delete implements brands.Repository
 func (r *BrandRepository) Delete(ctx context.Context, id brands.ID) error {
-	// Use database if available
-	if r.db != nil {
-		return r.db.Delete(ctx, "brands", int(id))
-	}
-
-	// Fallback to in-memory implementation
-	r.Lock()
-	defer r.Unlock()
-
-	if _, exists := r.brands[id]; !exists {
-		return fmt.Errorf("brand with ID %d not found", id)
-	}
-
-	delete(r.brands, id)
-	return nil
+	return r.db.Delete(ctx, "brands", int(id))
 }
 
 // FindAll implements brands.Repository
@@ -119,35 +86,19 @@ func (r *BrandRepository) FindAll(ctx context.Context) ([]*brands.Brand, error) 
 
 // FindByCategory implements brands.Repository
 func (r *BrandRepository) FindByCategory(ctx context.Context, category string) ([]*brands.Brand, error) {
-	// Use database if available
-	if r.db != nil {
-		filter := map[string]interface{}{
-			"category": category,
-		}
-
-		entities, err := r.db.FindBy(ctx, "brands", filter)
-		if err != nil {
-			return nil, err
-		}
-
-		result := make([]*brands.Brand, 0, len(entities))
-		for _, entity := range entities {
-			if domainBrand, ok := entity.(*brands.Brand); ok {
-				result = append(result, domainBrand)
-			}
-		}
-
-		return result, nil
+	filter := map[string]interface{}{
+		"category": category,
 	}
 
-	// Fallback to in-memory implementation
-	r.RLock()
-	defer r.RUnlock()
+	entities, err := r.db.FindBy(ctx, "brands", filter)
+	if err != nil {
+		return nil, err
+	}
 
-	var result []*brands.Brand
-	for _, brand := range r.brands {
-		if brand.Categories.Contains(categoriess.Category(category)) {
-			result = append(result, brand)
+	result := make([]*brands.Brand, 0, len(entities))
+	for _, entity := range entities {
+		if domainBrand, ok := entity.(*brands.Brand); ok {
+			result = append(result, domainBrand)
 		}
 	}
 
@@ -156,20 +107,10 @@ func (r *BrandRepository) FindByCategory(ctx context.Context, category string) (
 
 // Exists implements brands.Repository
 func (r *BrandRepository) Exists(ctx context.Context, id brands.ID) (bool, error) {
-	// Use database if available
-	if r.db != nil {
-		// BrandExists calls FindByID internally, so we can just use that
-		_, err := r.db.FindByID(ctx, "brands", int(id))
-		if err != nil {
-			return false, nil // Not found
-		}
-		return true, nil
+	// BrandExists calls FindByID internally, so we can just use that
+	_, err := r.db.FindByID(ctx, "brands", int(id))
+	if err != nil {
+		return false, nil // Not found
 	}
-
-	// Fallback to in-memory implementation
-	r.RLock()
-	defer r.RUnlock()
-
-	_, exists := r.brands[id]
-	return exists, nil
+	return true, nil
 }
