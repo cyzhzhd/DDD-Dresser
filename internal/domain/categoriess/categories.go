@@ -73,8 +73,6 @@ func (c *Categories) Contains(category Category) bool {
 	return false
 }
 
-// Add adds a new category to the Categories.
-// Returns an error if the category is invalid or already exists.
 func (c *Categories) Add(category Category) error {
 	if !validCategories[category] {
 		return fmt.Errorf("invalid category: %s", category)
@@ -93,7 +91,6 @@ func (c *Categories) Remove(category Category) error {
 		return fmt.Errorf("invalid category: %s", category)
 	}
 
-	// remove category from c.value
 	categories := make([]Category, 0, len(c.values)-1)
 	for _, v := range c.values {
 		if v != category {
@@ -104,7 +101,6 @@ func (c *Categories) Remove(category Category) error {
 	return nil
 }
 
-// IsValid checks if the given category is valid
 func IsValidCategory(category string) bool {
 	return validCategories[Category(category)]
 }

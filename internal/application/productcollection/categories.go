@@ -27,7 +27,6 @@ func NewCategoriesQueryService(brandRepository brands.Repository, productReposit
 	}
 }
 
-// ProductDTO represents a product with its brand information
 type ProductDTO struct {
 	ID        int    `json:"id"`
 	Name      string `json:"name"`
@@ -37,12 +36,12 @@ type ProductDTO struct {
 	BrandName string `json:"brandName"`
 }
 
-// LowestProductsDTO represents the collection of lowest priced products per category
 type LowestProductsDTO struct {
 	Products   []ProductDTO `json:"products"`
 	TotalPrice int          `json:"totalPrice"`
 }
 
+// GetLowestProducts 메서드는 모든 카테고리에서 가장 저렴한 제품을 조회합니다.
 func (s *CategoriesQueryService) GetLowestProducts(ctx context.Context) (*LowestProductsDTO, error) {
 	ps, err := s.productRepository.FindAll(ctx)
 	if err != nil {
@@ -50,11 +49,13 @@ func (s *CategoriesQueryService) GetLowestProducts(ctx context.Context) (*Lowest
 	}
 
 	pc := productcollection.NewProductCollection(ps)
+	// 카테고리 별로 가장 저렴한 제품을 조회합니다.
 	lps := pc.GetLowestProductsByCategories()
 
 	var lowestProducts []ProductDTO
 	totalPrice := 0
 
+	// DTO로 변환하며 전체 가격을 추가합니다.
 	for _, lp := range lps.Products {
 		b, err := s.brandRepository.FindByID(ctx, lp.GetBrandID())
 		if err != nil {
@@ -71,7 +72,6 @@ func (s *CategoriesQueryService) GetLowestProducts(ctx context.Context) (*Lowest
 		totalPrice += lp.GetPriceAmount()
 	}
 
-	// Convert to DTO
 	return &LowestProductsDTO{
 		Products:   lowestProducts,
 		TotalPrice: totalPrice,
@@ -88,6 +88,7 @@ type LowestProductsBrandDTO struct {
 	TotalPrice int
 }
 
+// GetLowestProductsByBrand 메서드는 모든 카테고리를 가장 저렴하게 살 수 있는 브랜드를 조회합니다.
 func (s *CategoriesQueryService) GetLowestProductsByBrand(ctx context.Context) (*LowestProductsByBrand, error) {
 	ps, err := s.productRepository.FindAll(ctx)
 	if err != nil {
@@ -102,9 +103,11 @@ func (s *CategoriesQueryService) GetLowestProductsByBrand(ctx context.Context) (
 
 	candidates := make([]*LowestProductsDTO, 0)
 
+	// 브랜드의 카테고리별 가장 저렴한 제품을 고릅니다.
 	for _, b := range bs {
 		brandProducts := pc.FilterByBrand(b.GetID())
 
+		// 카테고리별 가장 저렴한 제품들의 목록을 가져옵니다.
 		lps := brandProducts.GetLowestProductsByCategories()
 		totalPrice := 0
 		dtos := make([]ProductDTO, 0)
@@ -121,13 +124,13 @@ func (s *CategoriesQueryService) GetLowestProductsByBrand(ctx context.Context) (
 			totalPrice += lp.GetPriceAmount()
 		}
 
-		// Convert to DTO
 		candidates = append(candidates, &LowestProductsDTO{
 			Products:   dtos,
 			TotalPrice: totalPrice,
 		})
 	}
 
+	// 전체 금액이 가장 저렴한 브랜드를 찾습니다.
 	minTotalPrice := candidates[0].TotalPrice
 	minTotalPriceCandidate := candidates[0]
 
@@ -137,6 +140,8 @@ func (s *CategoriesQueryService) GetLowestProductsByBrand(ctx context.Context) (
 			minTotalPriceCandidate = c
 		}
 	}
+	fmt.Println("minTotalPrice", minTotalPrice)
+	fmt.Println("minTotalPriceCandidate", minTotalPriceCandidate)
 
 	return &LowestProductsByBrand{
 		Lowest: LowestProductsBrandDTO{
@@ -153,6 +158,7 @@ type LoHiProductsByCategory struct {
 	Highest  ProductDTO
 }
 
+// GetLowestAndHighestProductsByCategories 메서드는 카테고리별 가장 저렴한 제품과 가장 비싼 제품을 조회합니다.
 func (s *CategoriesQueryService) GetLowestAndHighestProductsByCategories(ctx context.Context, category string) (*LoHiProductsByCategory, error) {
 	if !categoriess.IsValidCategory(category) {
 		return nil, fmt.Errorf("invalid category: %s", category)
