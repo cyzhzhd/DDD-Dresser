@@ -17,6 +17,19 @@ const (
 	Accessories Category = "ACCESSORIES"
 )
 
+var (
+	CATEGORIES = []Category{
+		Tops,
+		Outerwear,
+		Pants,
+		Sneakers,
+		Bags,
+		Hats,
+		Socks,
+		Accessories,
+	}
+)
+
 var validCategories = map[Category]bool{
 	Tops:        true,
 	Outerwear:   true,
