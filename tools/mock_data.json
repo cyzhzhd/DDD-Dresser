@@ -1,0 +1,609 @@
+{
+  "brands": [
+    {
+      "name": "A"
+    },
+    {
+      "name": "B"
+    },
+    {
+      "name": "C"
+    },
+    {
+      "name": "D"
+    },
+    {
+      "name": "E"
+    },
+    {
+      "name": "F"
+    },
+    {
+      "name": "G"
+    },
+    {
+      "name": "H"
+    },
+    {
+      "name": "I"
+    }
+  ],
+  "products": [
+    {
+      "name": "A Tops",
+      "brand_id": 1,
+      "category": "TOPS",
+      "amount": 11200,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "A Outerwear",
+      "brand_id": 1,
+      "category": "OUTERWEAR",
+      "amount": 5500,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "A Pants",
+      "brand_id": 1,
+      "category": "PANTS",
+      "amount": 4200,
+      "currency": "KRW",
+      "size": "32x32"
+    },
+    {
+      "name": "A Sneakers",
+      "brand_id": 1,
+      "category": "SNEAKERS",
+      "amount": 9000,
+      "currency": "KRW",
+      "size": "260"
+    },
+    {
+      "name": "A Bags",
+      "brand_id": 1,
+      "category": "BAGS",
+      "amount": 2000,
+      "currency": "KRW",
+      "size": "FREE"
+    },
+    {
+      "name": "A Hats",
+      "brand_id": 1,
+      "category": "HATS",
+      "amount": 1700,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "A Socks",
+      "brand_id": 1,
+      "category": "SOCKS",
+      "amount": 1800,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "A Accessories",
+      "brand_id": 1,
+      "category": "ACCESSORIES",
+      "amount": 2300,
+      "currency": "KRW",
+      "size": "FREE"
+    },
+    {
+      "name": "B Tops",
+      "brand_id": 2,
+      "category": "TOPS",
+      "amount": 10500,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "B Outerwear",
+      "brand_id": 2,
+      "category": "OUTERWEAR",
+      "amount": 5900,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "B Pants",
+      "brand_id": 2,
+      "category": "PANTS",
+      "amount": 3800,
+      "currency": "KRW",
+      "size": "32x32"
+    },
+    {
+      "name": "B Sneakers",
+      "brand_id": 2,
+      "category": "SNEAKERS",
+      "amount": 9100,
+      "currency": "KRW",
+      "size": "260"
+    },
+    {
+      "name": "B Bags",
+      "brand_id": 2,
+      "category": "BAGS",
+      "amount": 2100,
+      "currency": "KRW",
+      "size": "FREE"
+    },
+    {
+      "name": "B Hats",
+      "brand_id": 2,
+      "category": "HATS",
+      "amount": 2000,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "B Socks",
+      "brand_id": 2,
+      "category": "SOCKS",
+      "amount": 2000,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "B Accessories",
+      "brand_id": 2,
+      "category": "ACCESSORIES",
+      "amount": 2200,
+      "currency": "KRW",
+      "size": "FREE"
+    },
+    {
+      "name": "C Tops",
+      "brand_id": 3,
+      "category": "TOPS",
+      "amount": 10000,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "C Outerwear",
+      "brand_id": 3,
+      "category": "OUTERWEAR",
+      "amount": 6200,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "C Pants",
+      "brand_id": 3,
+      "category": "PANTS",
+      "amount": 3300,
+      "currency": "KRW",
+      "size": "32x32"
+    },
+    {
+      "name": "C Sneakers",
+      "brand_id": 3,
+      "category": "SNEAKERS",
+      "amount": 9200,
+      "currency": "KRW",
+      "size": "260"
+    },
+    {
+      "name": "C Bags",
+      "brand_id": 3,
+      "category": "BAGS",
+      "amount": 2200,
+      "currency": "KRW",
+      "size": "FREE"
+    },
+    {
+      "name": "C Hats",
+      "brand_id": 3,
+      "category": "HATS",
+      "amount": 1900,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "C Socks",
+      "brand_id": 3,
+      "category": "SOCKS",
+      "amount": 2200,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "C Accessories",
+      "brand_id": 3,
+      "category": "ACCESSORIES",
+      "amount": 2100,
+      "currency": "KRW",
+      "size": "FREE"
+    },
+    {
+      "name": "D Tops",
+      "brand_id": 4,
+      "category": "TOPS",
+      "amount": 10100,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "D Outerwear",
+      "brand_id": 4,
+      "category": "OUTERWEAR",
+      "amount": 5100,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "D Pants",
+      "brand_id": 4,
+      "category": "PANTS",
+      "amount": 3000,
+      "currency": "KRW",
+      "size": "32x32"
+    },
+    {
+      "name": "D Sneakers",
+      "brand_id": 4,
+      "category": "SNEAKERS",
+      "amount": 9500,
+      "currency": "KRW",
+      "size": "260"
+    },
+    {
+      "name": "D Bags",
+      "brand_id": 4,
+      "category": "BAGS",
+      "amount": 2500,
+      "currency": "KRW",
+      "size": "FREE"
+    },
+    {
+      "name": "D Hats",
+      "brand_id": 4,
+      "category": "HATS",
+      "amount": 1500,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "D Socks",
+      "brand_id": 4,
+      "category": "SOCKS",
+      "amount": 2400,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "D Accessories",
+      "brand_id": 4,
+      "category": "ACCESSORIES",
+      "amount": 2000,
+      "currency": "KRW",
+      "size": "FREE"
+    },
+    {
+      "name": "E Tops",
+      "brand_id": 5,
+      "category": "TOPS",
+      "amount": 10700,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "E Outerwear",
+      "brand_id": 5,
+      "category": "OUTERWEAR",
+      "amount": 5000,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "E Pants",
+      "brand_id": 5,
+      "category": "PANTS",
+      "amount": 3800,
+      "currency": "KRW",
+      "size": "32x32"
+    },
+    {
+      "name": "E Sneakers",
+      "brand_id": 5,
+      "category": "SNEAKERS",
+      "amount": 9900,
+      "currency": "KRW",
+      "size": "260"
+    },
+    {
+      "name": "E Bags",
+      "brand_id": 5,
+      "category": "BAGS",
+      "amount": 2300,
+      "currency": "KRW",
+      "size": "FREE"
+    },
+    {
+      "name": "E Hats",
+      "brand_id": 5,
+      "category": "HATS",
+      "amount": 1800,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "E Socks",
+      "brand_id": 5,
+      "category": "SOCKS",
+      "amount": 2100,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "E Accessories",
+      "brand_id": 5,
+      "category": "ACCESSORIES",
+      "amount": 2100,
+      "currency": "KRW",
+      "size": "FREE"
+    },
+    {
+      "name": "F Tops",
+      "brand_id": 6,
+      "category": "TOPS",
+      "amount": 11200,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "F Outerwear",
+      "brand_id": 6,
+      "category": "OUTERWEAR",
+      "amount": 7200,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "F Pants",
+      "brand_id": 6,
+      "category": "PANTS",
+      "amount": 4000,
+      "currency": "KRW",
+      "size": "32x32"
+    },
+    {
+      "name": "F Sneakers",
+      "brand_id": 6,
+      "category": "SNEAKERS",
+      "amount": 9300,
+      "currency": "KRW",
+      "size": "260"
+    },
+    {
+      "name": "F Bags",
+      "brand_id": 6,
+      "category": "BAGS",
+      "amount": 2100,
+      "currency": "KRW",
+      "size": "FREE"
+    },
+    {
+      "name": "F Hats",
+      "brand_id": 6,
+      "category": "HATS",
+      "amount": 1600,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "F Socks",
+      "brand_id": 6,
+      "category": "SOCKS",
+      "amount": 2300,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "F Accessories",
+      "brand_id": 6,
+      "category": "ACCESSORIES",
+      "amount": 1900,
+      "currency": "KRW",
+      "size": "FREE"
+    },
+    {
+      "name": "G Tops",
+      "brand_id": 7,
+      "category": "TOPS",
+      "amount": 10500,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "G Outerwear",
+      "brand_id": 7,
+      "category": "OUTERWEAR",
+      "amount": 5800,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "G Pants",
+      "brand_id": 7,
+      "category": "PANTS",
+      "amount": 3900,
+      "currency": "KRW",
+      "size": "32x32"
+    },
+    {
+      "name": "G Sneakers",
+      "brand_id": 7,
+      "category": "SNEAKERS",
+      "amount": 9000,
+      "currency": "KRW",
+      "size": "260"
+    },
+    {
+      "name": "G Bags",
+      "brand_id": 7,
+      "category": "BAGS",
+      "amount": 2200,
+      "currency": "KRW",
+      "size": "FREE"
+    },
+    {
+      "name": "G Hats",
+      "brand_id": 7,
+      "category": "HATS",
+      "amount": 1700,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "G Socks",
+      "brand_id": 7,
+      "category": "SOCKS",
+      "amount": 2100,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "G Accessories",
+      "brand_id": 7,
+      "category": "ACCESSORIES",
+      "amount": 2000,
+      "currency": "KRW",
+      "size": "FREE"
+    },
+    {
+      "name": "H Tops",
+      "brand_id": 8,
+      "category": "TOPS",
+      "amount": 10800,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "H Outerwear",
+      "brand_id": 8,
+      "category": "OUTERWEAR",
+      "amount": 6300,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "H Pants",
+      "brand_id": 8,
+      "category": "PANTS",
+      "amount": 3100,
+      "currency": "KRW",
+      "size": "32x32"
+    },
+    {
+      "name": "H Sneakers",
+      "brand_id": 8,
+      "category": "SNEAKERS",
+      "amount": 9700,
+      "currency": "KRW",
+      "size": "260"
+    },
+    {
+      "name": "H Bags",
+      "brand_id": 8,
+      "category": "BAGS",
+      "amount": 2100,
+      "currency": "KRW",
+      "size": "FREE"
+    },
+    {
+      "name": "H Hats",
+      "brand_id": 8,
+      "category": "HATS",
+      "amount": 1600,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "H Socks",
+      "brand_id": 8,
+      "category": "SOCKS",
+      "amount": 2000,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "H Accessories",
+      "brand_id": 8,
+      "category": "ACCESSORIES",
+      "amount": 2000,
+      "currency": "KRW",
+      "size": "FREE"
+    },
+    {
+      "name": "I Tops",
+      "brand_id": 9,
+      "category": "TOPS",
+      "amount": 11400,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "I Outerwear",
+      "brand_id": 9,
+      "category": "OUTERWEAR",
+      "amount": 6700,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "I Pants",
+      "brand_id": 9,
+      "category": "PANTS",
+      "amount": 3200,
+      "currency": "KRW",
+      "size": "32x32"
+    },
+    {
+      "name": "I Sneakers",
+      "brand_id": 9,
+      "category": "SNEAKERS",
+      "amount": 9500,
+      "currency": "KRW",
+      "size": "260"
+    },
+    {
+      "name": "I Bags",
+      "brand_id": 9,
+      "category": "BAGS",
+      "amount": 2400,
+      "currency": "KRW",
+      "size": "FREE"
+    },
+    {
+      "name": "I Hats",
+      "brand_id": 9,
+      "category": "HATS",
+      "amount": 1700,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "I Socks",
+      "brand_id": 9,
+      "category": "SOCKS",
+      "amount": 1700,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "I Accessories",
+      "brand_id": 9,
+      "category": "ACCESSORIES",
+      "amount": 2400,
+      "currency": "KRW",
+      "size": "FREE"
+    }
+  ]
+}
