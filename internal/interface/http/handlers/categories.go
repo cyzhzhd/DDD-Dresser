@@ -23,6 +23,7 @@ func (h *CategoriesHandler) RegisterRoutes(r *gin.Engine) {
 	{
 		g.GET("/lowest", h.GetLowestProducts)
 		g.GET("/lowest/brand", h.GetLowestProductsByBrand)
+		g.GET("/lohi/:category", h.GetLowestAndHighestProductsByCategories)
 	}
 }
 
@@ -43,4 +44,14 @@ func (h *CategoriesHandler) GetLowestProductsByBrand(ctx *gin.Context) {
 		return
 	}
 	ctx.JSON(http.StatusOK, lowestProductsByBrand)
+}
+
+func (h *CategoriesHandler) GetLowestAndHighestProductsByCategories(ctx *gin.Context) {
+	category := ctx.Param("category")
+	lohiProductsByCategory, err := h.categoriesQueryService.GetLowestAndHighestProductsByCategories(ctx, category)
+	if err != nil {
+		ctx.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": fmt.Sprintf("Failed to get lowest and highest products by category: %s", err.Error())})
+		return
+	}
+	ctx.JSON(http.StatusOK, lohiProductsByCategory)
 }
