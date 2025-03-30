@@ -3,13 +3,16 @@ package productcollection
 import (
 	"context"
 	"dresser/internal/domain/brands"
+	"dresser/internal/domain/categoriess"
 	"dresser/internal/domain/productcollection"
 	"dresser/internal/domain/products"
+	"fmt"
 )
 
 type ICategoriesQueryApplicationService interface {
 	GetLowestProducts(ctx context.Context) (*LowestProductsDTO, error)
 	GetLowestProductsByBrand(ctx context.Context) (*LowestProductsByBrand, error)
+	GetLowestAndHighestProductsByCategories(ctx context.Context, category string) (*LoHiProductsByCategory, error)
 }
 
 type CategoriesQueryService struct {
@@ -141,5 +144,58 @@ func (s *CategoriesQueryService) GetLowestProductsByBrand(ctx context.Context) (
 			Category:   minTotalPriceCandidate.Products,
 			TotalPrice: minTotalPriceCandidate.TotalPrice,
 		},
+	}, nil
+}
+
+type LoHiProductsByCategory struct {
+	Category string
+	Lowest   ProductDTO
+	Highest  ProductDTO
+}
+
+func (s *CategoriesQueryService) GetLowestAndHighestProductsByCategories(ctx context.Context, category string) (*LoHiProductsByCategory, error) {
+	if !categoriess.IsValidCategory(category) {
+		return nil, fmt.Errorf("invalid category: %s", category)
+	}
+
+	ps, err := s.productRepository.FindAll(ctx)
+	if err != nil {
+		return nil, err
+	}
+	pc := productcollection.NewProductCollection(ps).FilterByCategory(category)
+
+	lowest := pc.GetLowestPriceProduct()
+	highest := pc.GetHighestPriceProduct()
+
+	lowestBrand, err := s.brandRepository.FindByID(ctx, lowest.GetBrandID())
+	if err != nil {
+		return nil, err
+	}
+	highestBrand, err := s.brandRepository.FindByID(ctx, highest.GetBrandID())
+	if err != nil {
+		return nil, err
+	}
+	lowestDTO := ProductDTO{
+		ID:        lowest.GetID(),
+		Name:      lowest.GetName(),
+		Price:     lowest.GetPriceAmount(),
+		Category:  string(category),
+		BrandID:   int(lowestBrand.GetID()),
+		BrandName: lowestBrand.GetName(),
+	}
+
+	highestDTO := ProductDTO{
+		ID:        highest.GetID(),
+		Name:      highest.GetName(),
+		Price:     highest.GetPriceAmount(),
+		Category:  string(category),
+		BrandID:   int(highestBrand.GetID()),
+		BrandName: highestBrand.GetName(),
+	}
+
+	return &LoHiProductsByCategory{
+		Category: string(category),
+		Lowest:   lowestDTO,
+		Highest:  highestDTO,
 	}, nil
 }

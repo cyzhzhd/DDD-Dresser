@@ -51,6 +51,21 @@ func (pc *ProductCollection) GetLowestPriceProduct() *products.Product {
 	}
 	return lowestPriceProduct
 }
+func (pc *ProductCollection) GetHighestPriceProduct() *products.Product {
+	var (
+		highestPriceProduct *products.Product
+		highestPrice        = 0
+	)
+
+	for _, product := range pc.Products {
+		// todo: 화폐 단위 고려
+		if product.Price.Amount() > highestPrice {
+			highestPrice = product.Price.Amount()
+			highestPriceProduct = product
+		}
+	}
+	return highestPriceProduct
+}
 
 func (pc *ProductCollection) GetLowestProductsByCategories() *ProductCollection {
 	cs := categoriess.CATEGORIES
