@@ -1,7 +1,5 @@
 package brands
 
-import "dresser/internal/domain/categoriess"
-
 type ID int
 
 type Brand struct {
@@ -9,7 +7,7 @@ type Brand struct {
 	Name string
 }
 
-func New(id int, name string, categories categoriess.Categories) (*Brand, error) {
+func New(id int, name string) (*Brand, error) {
 	return &Brand{
 		ID:   ID(id),
 		Name: name,
