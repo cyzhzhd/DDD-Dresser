@@ -4,6 +4,7 @@ import (
 	"dresser/internal/domain/brands"
 	"dresser/internal/domain/categoriess"
 	"dresser/internal/domain/products"
+	"errors"
 )
 
 type ProductCollection struct {
@@ -36,11 +37,14 @@ func (pc *ProductCollection) FilterByBrand(brandID brands.ID) *ProductCollection
 	return NewProductCollection(filteredProducts)
 }
 
-func (pc *ProductCollection) GetLowestPriceProduct() *products.Product {
+func (pc *ProductCollection) GetLowestPriceProduct() (*products.Product, error) {
 	var (
 		lowestPriceProduct *products.Product
 		lowestPrice        = 100000000
 	)
+	if len(pc.Products) == 0 {
+		return nil, errors.New("no products")
+	}
 
 	for _, product := range pc.Products {
 		// todo: 화폐 단위 고려
@@ -49,13 +53,16 @@ func (pc *ProductCollection) GetLowestPriceProduct() *products.Product {
 			lowestPriceProduct = product
 		}
 	}
-	return lowestPriceProduct
+	return lowestPriceProduct, nil
 }
-func (pc *ProductCollection) GetHighestPriceProduct() *products.Product {
+func (pc *ProductCollection) GetHighestPriceProduct() (*products.Product, error) {
 	var (
 		highestPriceProduct *products.Product
 		highestPrice        = 0
 	)
+	if len(pc.Products) == 0 {
+		return nil, errors.New("no products")
+	}
 
 	for _, product := range pc.Products {
 		// todo: 화폐 단위 고려
@@ -64,7 +71,7 @@ func (pc *ProductCollection) GetHighestPriceProduct() *products.Product {
 			highestPriceProduct = product
 		}
 	}
-	return highestPriceProduct
+	return highestPriceProduct, nil
 }
 
 func (pc *ProductCollection) GetLowestProductsByCategories() *ProductCollection {
@@ -73,7 +80,10 @@ func (pc *ProductCollection) GetLowestProductsByCategories() *ProductCollection 
 	var lowestProducts []*products.Product
 
 	for _, c := range cs {
-		p := pc.FilterByCategory(string(c)).GetLowestPriceProduct()
+		p, err := pc.FilterByCategory(string(c)).GetLowestPriceProduct()
+		if err != nil {
+			continue
+		}
 		lowestProducts = append(lowestProducts, p)
 	}
 

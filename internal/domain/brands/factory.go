@@ -2,7 +2,6 @@ package brands
 
 import (
 	"context"
-	"dresser/internal/domain/categoriess"
 	"errors"
 )
 
@@ -13,7 +12,7 @@ var (
 
 // Factory defines the port for brand creation
 type Factory interface {
-	CreateBrand(ctx context.Context, name string, categories []string) (*Brand, error)
+	CreateBrand(ctx context.Context, name string) (*Brand, error)
 }
 
 // DefaultFactory implements the Factory interface
@@ -29,18 +28,13 @@ func NewFactory(repository Repository) DefaultFactory {
 }
 
 // CreateBrand implements Factory interface
-func (f *DefaultFactory) CreateBrand(ctx context.Context, name string, categories []string) (*Brand, error) {
+func (f *DefaultFactory) CreateBrand(ctx context.Context, name string) (*Brand, error) {
 	if name == "" {
 		return nil, ErrEmptyBrandName
 	}
 
-	cats, err := categoriess.NewCategories(categories)
-	if err != nil {
-		return nil, err
-	}
-
 	nextID := f.repository.NextID()
-	brand, err := New(int(nextID), name, *cats)
+	brand, err := New(int(nextID), name)
 	if err != nil {
 		return nil, err
 	}
