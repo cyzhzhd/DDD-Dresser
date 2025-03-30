@@ -34,7 +34,6 @@ func (h *BrandHandler) RegisterRoutes(r *gin.Engine) {
 }
 
 func (h *BrandHandler) GetBrands(ctx *gin.Context) {
-	fmt.Println("h.brandQueryService", h.brandQueryService)
 	brands, err := h.brandQueryService.GetAll(ctx)
 	if err != nil {
 		ctx.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": fmt.Sprintf("Failed to get brands: %s", err.Error())})
