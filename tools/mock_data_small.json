@@ -1,0 +1,114 @@
+{
+  "brands": [
+    {
+      "name": "A"
+    },
+    {
+      "name": "B"
+    },
+    {
+      "name": "C"
+    },
+    {
+      "name": "D"
+    }
+  ],
+  "products": [
+    {
+      "name": "A Tops",
+      "brand_id": 1,
+      "category": "TOPS",
+      "amount": 11200,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "A Outerwear",
+      "brand_id": 1,
+      "category": "OUTERWEAR",
+      "amount": 5500,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "A Pants",
+      "brand_id": 1,
+      "category": "PANTS",
+      "amount": 4200,
+      "currency": "KRW",
+      "size": "32x32"
+    },
+    {
+      "name": "B Tops",
+      "brand_id": 2,
+      "category": "TOPS",
+      "amount": 10500,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "B Outerwear",
+      "brand_id": 2,
+      "category": "OUTERWEAR",
+      "amount": 5900,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "B Pants",
+      "brand_id": 2,
+      "category": "PANTS",
+      "amount": 3800,
+      "currency": "KRW",
+      "size": "32x32"
+    },
+    {
+      "name": "C Tops",
+      "brand_id": 3,
+      "category": "TOPS",
+      "amount": 10000,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "C Outerwear",
+      "brand_id": 3,
+      "category": "OUTERWEAR",
+      "amount": 6200,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "C Pants",
+      "brand_id": 3,
+      "category": "PANTS",
+      "amount": 3300,
+      "currency": "KRW",
+      "size": "32x32"
+    },
+    {
+      "name": "D Tops",
+      "brand_id": 4,
+      "category": "TOPS",
+      "amount": 10100,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "D Outerwear",
+      "brand_id": 4,
+      "category": "OUTERWEAR",
+      "amount": 5100,
+      "currency": "KRW",
+      "size": "M"
+    },
+    {
+      "name": "D Pants",
+      "brand_id": 4,
+      "category": "PANTS",
+      "amount": 3000,
+      "currency": "KRW",
+      "size": "32x32"
+    }
+  ]
+}

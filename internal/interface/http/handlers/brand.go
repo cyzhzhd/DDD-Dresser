@@ -59,8 +59,7 @@ func (h *BrandHandler) GetBrand(ctx *gin.Context) {
 
 // CreateBrandRequest represents the data needed to create a new brand
 type CreateBrandRequest struct {
-	Name       string   `json:"name" binding:"required"`
-	Categories []string `json:"categories"`
+	Name string `json:"name" binding:"required"`
 }
 
 func (h *BrandHandler) CreateBrand(ctx *gin.Context) {
@@ -69,13 +68,8 @@ func (h *BrandHandler) CreateBrand(ctx *gin.Context) {
 		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": fmt.Sprintf("Invalid request body: %s", err.Error())})
 		return
 	}
-
-	// The binding:"required" tag ensures the name is not empty
-	// No need to check if Categories is empty as it's allowed
-
 	cmd := brands.RegisterBrandCommand{
-		Name:       req.Name,
-		Categories: req.Categories,
+		Name: req.Name,
 	}
 
 	brand, err := h.brandRegisterService.Register(ctx, cmd)

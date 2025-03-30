@@ -164,8 +164,14 @@ func (s *CategoriesQueryService) GetLowestAndHighestProductsByCategories(ctx con
 	}
 	pc := productcollection.NewProductCollection(ps).FilterByCategory(category)
 
-	lowest := pc.GetLowestPriceProduct()
-	highest := pc.GetHighestPriceProduct()
+	lowest, err := pc.GetLowestPriceProduct()
+	if err != nil {
+		return nil, err
+	}
+	highest, err := pc.GetHighestPriceProduct()
+	if err != nil {
+		return nil, err
+	}
 
 	lowestBrand, err := s.brandRepository.FindByID(ctx, lowest.GetBrandID())
 	if err != nil {
