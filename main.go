@@ -9,6 +9,7 @@ import (
 	"time"
 
 	abrands "dresser/internal/application/brands"
+	aproductcollection "dresser/internal/application/productcollection"
 	aproducts "dresser/internal/application/products"
 	dbrands "dresser/internal/domain/brands"
 	dproducts "dresser/internal/domain/products"
@@ -52,6 +53,9 @@ func main() {
 	productDeleteService := aproducts.NewProductDeleteService(productRepo)
 	productUpdateService := aproducts.NewProductUpdateService(productRepo, productFactory)
 
+	// Initialize categories query service
+	categoriesQueryService := aproductcollection.NewCategoriesQueryService(brandRepo, productRepo)
+
 	// Initialize HTTP server
 	server := httpserver.NewHTTPServer(httpserver.ServerConfig{
 		Port:                 "8080",
@@ -63,6 +67,8 @@ func main() {
 		ProductQueryService:    productQueryService,
 		ProductDeleteService:   productDeleteService,
 		ProductUpdateService:   productUpdateService,
+
+		CategoriesQueryService: categoriesQueryService,
 	})
 
 	err = listenAndServeGracefully(server)

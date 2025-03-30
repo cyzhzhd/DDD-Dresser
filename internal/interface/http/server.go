@@ -3,6 +3,7 @@ package http
 import (
 	"context"
 	"dresser/internal/application/brands"
+	"dresser/internal/application/productcollection"
 	"dresser/internal/application/products"
 	"dresser/internal/interface/http/handlers"
 	"net/http"
@@ -20,6 +21,8 @@ type Server struct {
 	ProductDeleteService   products.IProductDeleteApplicationService
 	ProductUpdateService   products.IProductUpdateApplicationService
 
+	CategoriesQueryService productcollection.ICategoriesQueryApplicationService
+
 	server *http.Server
 	router *gin.Engine
 }
@@ -34,6 +37,8 @@ type ServerConfig struct {
 	ProductQueryService    products.IProductQueryApplicationService
 	ProductDeleteService   products.IProductDeleteApplicationService
 	ProductUpdateService   products.IProductUpdateApplicationService
+
+	CategoriesQueryService productcollection.ICategoriesQueryApplicationService
 }
 
 func NewHTTPServer(config ServerConfig) *Server {
@@ -49,6 +54,8 @@ func NewHTTPServer(config ServerConfig) *Server {
 		ProductDeleteService:   config.ProductDeleteService,
 		ProductUpdateService:   config.ProductUpdateService,
 
+		CategoriesQueryService: config.CategoriesQueryService,
+
 		router: router,
 		server: &http.Server{
 			Addr:    ":" + config.Port,
@@ -63,6 +70,9 @@ func (s *Server) Start() error {
 
 	productHandler := handlers.NewProductHandler(s.ProductRegisterService, s.ProductQueryService, s.ProductDeleteService, s.ProductUpdateService)
 	productHandler.RegisterRoutes(s.router)
+
+	categoriesHandler := handlers.NewCategoriesHandler(s.CategoriesQueryService)
+	categoriesHandler.RegisterRoutes(s.router)
 
 	return s.server.ListenAndServe()
 }

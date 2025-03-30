@@ -54,6 +54,11 @@ func (p *Product) GetPrice() prices.Price {
 	return p.Price
 }
 
+// GetPrice returns the product price
+func (p *Product) GetPriceAmount() int {
+	return int(p.Price.Amount())
+}
+
 // GetSize returns the product size
 func (p *Product) GetSize() sizes.Size {
 	return p.Size
