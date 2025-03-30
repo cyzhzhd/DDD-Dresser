@@ -105,6 +105,6 @@ func (c *Categories) Remove(category Category) error {
 }
 
 // IsValid checks if the given category is valid
-func IsValidCategory(category Category) bool {
-	return validCategories[category]
+func IsValidCategory(category string) bool {
+	return validCategories[Category(category)]
 }
