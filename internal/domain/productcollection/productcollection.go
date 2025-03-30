@@ -74,6 +74,7 @@ func (pc *ProductCollection) GetHighestPriceProduct() (*products.Product, error)
 	return highestPriceProduct, nil
 }
 
+// GetLowestProductsByCategories 메서드는 모든 카테고리에서 가장 저렴한 제품 집합을 리턴합니다.
 func (pc *ProductCollection) GetLowestProductsByCategories() *ProductCollection {
 	cs := categoriess.CATEGORIES
 
