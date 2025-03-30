@@ -16,8 +16,8 @@ func New(id int, name string, categories categoriess.Categories) (*Brand, error)
 	}, nil
 }
 
-func (b *Brand) GetID() int {
-	return int(b.ID)
+func (b *Brand) GetID() ID {
+	return b.ID
 }
 
 func (b *Brand) GetName() string {

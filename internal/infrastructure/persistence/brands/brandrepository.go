@@ -30,7 +30,7 @@ func (r *BrandRepository) NextID() brands.ID {
 
 // Create implements brands.Repository
 func (r *BrandRepository) Create(ctx context.Context, brand *brands.Brand) (*brands.Brand, error) {
-	res, err := r.db.Create(ctx, "brands", brand.GetID(), brand)
+	res, err := r.db.Create(ctx, "brands", int(brand.GetID()), brand)
 	if err != nil {
 		return nil, err
 	}
