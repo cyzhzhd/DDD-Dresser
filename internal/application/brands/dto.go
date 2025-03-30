@@ -13,7 +13,7 @@ type BrandDTO struct {
 
 func brand2DTO(brand *dbrands.Brand) *BrandDTO {
 	return &BrandDTO{
-		ID:   brand.GetID(),
+		ID:   int(brand.GetID()),
 		Name: brand.GetName(),
 	}
 }

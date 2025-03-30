@@ -2,6 +2,7 @@ package productcollection
 
 import (
 	"dresser/internal/domain/brands"
+	"dresser/internal/domain/categoriess"
 	"dresser/internal/domain/products"
 )
 
@@ -15,9 +16,9 @@ func NewProductCollection(products []*products.Product) *ProductCollection {
 	}
 }
 
-func (c *ProductCollection) FilterByCategory(category string) *ProductCollection {
+func (pc *ProductCollection) FilterByCategory(category string) *ProductCollection {
 	filteredProducts := make([]*products.Product, 0)
-	for _, product := range c.Products {
+	for _, product := range pc.Products {
 		if product.Category == category {
 			filteredProducts = append(filteredProducts, product)
 		}
@@ -25,9 +26,9 @@ func (c *ProductCollection) FilterByCategory(category string) *ProductCollection
 	return NewProductCollection(filteredProducts)
 }
 
-func (c *ProductCollection) FilterByBrand(brandID brands.ID) *ProductCollection {
+func (pc *ProductCollection) FilterByBrand(brandID brands.ID) *ProductCollection {
 	filteredProducts := make([]*products.Product, 0)
-	for _, product := range c.Products {
+	for _, product := range pc.Products {
 		if product.Brand == brandID {
 			filteredProducts = append(filteredProducts, product)
 		}
@@ -35,13 +36,13 @@ func (c *ProductCollection) FilterByBrand(brandID brands.ID) *ProductCollection 
 	return NewProductCollection(filteredProducts)
 }
 
-func (c *ProductCollection) GetLowestPriceProduct() *products.Product {
+func (pc *ProductCollection) GetLowestPriceProduct() *products.Product {
 	var (
 		lowestPriceProduct *products.Product
 		lowestPrice        = 100000000
 	)
 
-	for _, product := range c.Products {
+	for _, product := range pc.Products {
 		// todo: 화폐 단위 고려
 		if product.Price.Amount() < lowestPrice {
 			lowestPrice = product.Price.Amount()
@@ -49,4 +50,17 @@ func (c *ProductCollection) GetLowestPriceProduct() *products.Product {
 		}
 	}
 	return lowestPriceProduct
+}
+
+func (pc *ProductCollection) GetLowestProductsByCategories() *ProductCollection {
+	cs := categoriess.CATEGORIES
+
+	var lowestProducts []*products.Product
+
+	for _, c := range cs {
+		p := pc.FilterByCategory(string(c)).GetLowestPriceProduct()
+		lowestProducts = append(lowestProducts, p)
+	}
+
+	return NewProductCollection(lowestProducts)
 }
