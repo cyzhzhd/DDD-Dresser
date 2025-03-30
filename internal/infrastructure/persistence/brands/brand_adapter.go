@@ -25,8 +25,7 @@ func (a *BrandAdapter) ToDomain(appBrand *appBrands.BrandDTO) (*brands.Brand, er
 // ToApplication converts domain brand to application brand
 func (a *BrandAdapter) ToApplication(domainBrand *brands.Brand) *appBrands.BrandDTO {
 	return &appBrands.BrandDTO{
-		ID:         int(domainBrand.ID),
-		Name:       domainBrand.Name,
-		Categories: domainBrand.Categories.Values(),
+		ID:   int(domainBrand.ID),
+		Name: domainBrand.Name,
 	}
 }
