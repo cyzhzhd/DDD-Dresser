@@ -1,0 +1,149 @@
+2025-03-31 11:37:33,213 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 6.2.5.Final
+2025-03-31 11:37:33,220 INFO o.s.b.StartupInfoLogger [main] Starting Application using Java 23.0.2 on ehyunui-MacBookPro.local with PID 43088 (/Users/ehyun/dev/ek/DDD-Dresser/temp/java/target/classes started by ehyun in /Users/ehyun/dev/ek/DDD-Dresser/temp/java)
+2025-03-31 11:37:33,220 DEBUG o.s.b.StartupInfoLogger [main] Running with Spring Boot v2.7.5, Spring v5.3.23
+2025-03-31 11:37:33,221 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2025-03-31 11:37:33,611 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2025-03-31 11:37:33,616 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2025-03-31 11:37:33,616 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2025-03-31 11:37:33,616 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.68]
+2025-03-31 11:37:33,654 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2025-03-31 11:37:33,654 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 409 ms
+2025-03-31 11:37:33,849 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2025-03-31 11:37:33,863 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2025-03-31 11:37:33,866 INFO c.d.Application$StartupListener [main] API is now available at http://localhost:8080/api/
+2025-03-31 11:37:33,866 INFO c.d.Application$StartupListener [main] Available endpoints:
+2025-03-31 11:37:33,866 INFO c.d.Application$StartupListener [main]   - GET  /api/brands
+2025-03-31 11:37:33,866 INFO c.d.Application$StartupListener [main]   - GET  /api/brands/{id}
+2025-03-31 11:37:33,866 INFO c.d.Application$StartupListener [main]   - POST /api/brands
+2025-03-31 11:37:33,866 INFO c.d.Application$StartupListener [main]   - DELETE /api/brands/{id}
+2025-03-31 11:37:33,866 INFO c.d.Application$StartupListener [main]   - GET  /api/products
+2025-03-31 11:37:33,866 INFO c.d.Application$StartupListener [main]   - GET  /api/products/{id}
+2025-03-31 11:37:33,866 INFO c.d.Application$StartupListener [main]   - POST /api/products
+2025-03-31 11:37:33,866 INFO c.d.Application$StartupListener [main]   - PUT  /api/products/{id}
+2025-03-31 11:37:33,866 INFO c.d.Application$StartupListener [main]   - DELETE /api/products/{id}
+2025-03-31 11:37:33,866 INFO c.d.Application$StartupListener [main]   - GET  /api/categories
+2025-03-31 11:37:33,868 INFO o.s.b.StartupInfoLogger [main] Started Application in 0.852 seconds (JVM running for 1.012)
+2025-03-31 11:37:33,869 INFO c.d.i.DataInitializer [main] Initializing sample data...
+2025-03-31 11:37:33,869 INFO c.d.i.DataInitializer [main] Sample data initialization completed successfully
+2025-03-31 11:37:33,870 INFO c.d.Application [main] DDD-Dresser application started successfully!
+2025-03-31 11:37:52,472 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-03-31 11:37:52,473 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2025-03-31 11:37:52,475 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 2 ms
+2025-03-31 11:37:52,493 INFO c.d.i.h.RequestLoggingInterceptor [http-nio-8080-exec-1] Request: GET /api/categories/lohi/SOCKS
+2025-03-31 11:37:52,495 INFO c.d.i.h.RequestLoggingInterceptor [http-nio-8080-exec-1] Response: GET /api/categories/lohi/SOCKS - Status: 404
+2025-03-31 11:38:04,404 INFO c.d.i.h.RequestLoggingInterceptor [http-nio-8080-exec-2] Request: GET /api/brands
+2025-03-31 11:38:04,413 INFO c.d.i.h.RequestLoggingInterceptor [http-nio-8080-exec-2] Response: GET /api/brands - Status: 200
+2025-03-31 11:38:12,559 INFO c.d.i.h.RequestLoggingInterceptor [http-nio-8080-exec-4] Request: GET /api/products
+2025-03-31 11:38:12,591 INFO c.d.i.h.RequestLoggingInterceptor [http-nio-8080-exec-4] Response: GET /api/products - Status: 200
+2025-03-31 11:38:46,560 INFO c.d.i.h.RequestLoggingInterceptor [http-nio-8080-exec-6] Request: GET /api/categories/lowest-products
+2025-03-31 11:38:46,577 INFO c.d.i.h.RequestLoggingInterceptor [http-nio-8080-exec-6] Response: GET /api/categories/lowest-products - Status: 200
+2025-03-31 11:38:59,360 INFO c.d.i.h.RequestLoggingInterceptor [http-nio-8080-exec-8] Request: GET /api/categories/lowest-by-brand
+2025-03-31 11:38:59,384 INFO c.d.i.h.RequestLoggingInterceptor [http-nio-8080-exec-8] Response: GET /api/categories/lowest-by-brand - Status: 200
+2025-03-31 11:39:26,979 INFO c.d.i.h.RequestLoggingInterceptor [http-nio-8080-exec-10] Request: GET /api/categories/category/lowest-highest
+2025-03-31 11:39:26,993 WARN c.d.i.h.GlobalExceptionHandler [http-nio-8080-exec-10] Bad request:
+java.lang.IllegalArgumentException: Invalid category: category
+	at com.dresser.application.productcollection.CategoriesQueryService.getLowestAndHighestProductsByCategory(CategoriesQueryService.java:177)
+	at com.dresser.interfaces.http.handlers.CategoriesController.getLowestAndHighestByCategory(CategoriesController.java:43)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:670)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:779)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1789)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:1575)
+2025-03-31 11:39:36,169 INFO c.d.i.h.RequestLoggingInterceptor [http-nio-8080-exec-1] Request: GET /api/categories/sneakers/lowest-highest
+2025-03-31 11:39:36,173 WARN c.d.i.h.GlobalExceptionHandler [http-nio-8080-exec-1] Bad request:
+java.lang.IllegalArgumentException: Invalid category: sneakers
+	at com.dresser.application.productcollection.CategoriesQueryService.getLowestAndHighestProductsByCategory(CategoriesQueryService.java:177)
+	at com.dresser.interfaces.http.handlers.CategoriesController.getLowestAndHighestByCategory(CategoriesController.java:43)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:670)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:779)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1789)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:1575)
+2025-03-31 11:39:39,249 INFO c.d.i.h.RequestLoggingInterceptor [http-nio-8080-exec-2] Request: GET /api/categories/Sneakers/lowest-highest
+2025-03-31 11:39:39,256 INFO c.d.i.h.RequestLoggingInterceptor [http-nio-8080-exec-2] Response: GET /api/categories/Sneakers/lowest-highest - Status: 200
